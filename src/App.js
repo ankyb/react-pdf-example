@@ -7,15 +7,16 @@ class App extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {width: null}
+    this.throttledSetDivSize = throttle(this.setDivSize, 500)
   }
 
   componentDidMount () {
     this.setDivSize()
-    window.addEventListener("resize", throttle(this.setDivSize, 500))
+    window.addEventListener("resize", this.throttledSetDivSize)
   }
 
   componentWillUnmount () {
-    window.addEventListener("resize", throttle(this.setDivSize, 500))
+    window.removeEventListener("resize", this.throttledSetDivSize)
   }
 
   setDivSize = () => {
