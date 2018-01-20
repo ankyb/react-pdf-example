@@ -1,0 +1,1 @@
+Example of a React app rendering a PDF using [react-pdf](https://github.com/wojtekmaj/react-pdf).
